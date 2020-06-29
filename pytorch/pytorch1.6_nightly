@@ -27,6 +27,7 @@ RUN apt-get update && \
 RUN ln -s /opt/conda/bin/pip /opt/conda/bin/pip3 && conda install -c conda-forge opencv -y
 RUN pip3 install --upgrade pip && \
         pip3 install --no-cache-dir \
+        --pre torch torchvision -f https://download.pytorch.org/whl/nightly/cu102/torch_nightly.html\
         keras \
         torchvision\
         numpy \
@@ -34,7 +35,5 @@ RUN pip3 install --upgrade pip && \
         visdom \
         pandas \
         scikit-learn
-
-RUN pip3 install --pre torch torchvision -f https://download.pytorch.org/whl/nightly/cu102/torch_nightly.html
 ENV LANG C.UTF-8
 WORKDIR /
